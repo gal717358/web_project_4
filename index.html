@@ -5,6 +5,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./vendor/normalize.css">
+    <link rel="stylesheet" href="/vendor/fonts/fonts.css">
     <link rel="stylesheet" href="/styles/style.css" />
     <title>Around The U.S.</title>
 </head>
@@ -14,7 +16,7 @@
         <header class="header">
             <img class="header__logo" src="./images/Vector.svg" alt="header-logo" />
         </header>
-        
+
         <main>
             <div class="profile">
                 <img class="profile__avatar" src="./images/image.png" alt="profile picture" />
@@ -86,14 +88,25 @@
                     </div>
                 </div>
             </section>
-            <footer class="footer">
-                <p class="footer__copyright">© 2021 Around The U.S.</p>
-            </footer>
-
-
-
         </main>
-    </div>
+        <footer class="footer">
+            <p class="footer__copyright">© 2021 Around The U.S.</p>
+        </footer>
+        <div class="wrapper">
+            <div class="wrapper__container">
+                <button type="button" aria-label="Close button" class="wrapper__close-btn"> </button>
+                <h2 class="form__title">Edit Profile </h2>
+                <form class="Form" action="/">
+                    <input class="form__text-input form__text-input_name" type="text" name="name" placeholder="Name"
+                        id="name">
+                    <input class="form__text-input form__text-input_job" type="text" name="job" placeholder="Job"
+                        id="job">
+                    <button type="submit" class="form__submit-btn">Save</button>
+                </form>
+
+
+            </div>
+        </div>
 </body>
 
 </html>
