@@ -7,18 +7,16 @@
     top: -45px;
     right: -45px;
     cursor: pointer;
-    background-color: transparent; 
-    
+    background-color: transparent;
 }
-.modal__close-btn:hover{
-    opacity: 0.6; 
+.modal__close-btn:hover {
+    opacity: 0.6;
     transition: 0.3s;
 }
 @media screen and (max-width: 580px) {
-    .modal__close-btn{
+    .modal__close-btn {
         right: -5px;
         height: 26px;
         width: 26px;
-                
     }
 }
