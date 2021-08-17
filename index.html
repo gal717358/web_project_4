@@ -89,19 +89,17 @@
         <footer class="footer">
             <p class="footer__copyright">© 2021 Around The U.S.</p>
         </footer>
-        <!-------
-        <div class="wrapper">
-            <div class="wrapper__container">
-                <button type="button" aria-label="Close button" class="wrapper__close-btn"> </button>
-
-                <form class="Form" action="/">
+        <div class="modal modal__opened">
+            <div class="modal__container">
+                <button type="button"  class="modal__close-btn"> 
+                    <img src="./images/Close-Icon.png" alt="">
+                </button>
+                <form class="form" action="/">
                     <fieldset class="form__fieldset">
-                        <legend>
                             <h2 class="form__title">Edit Profile </h2>
-                        </legend>
-                        <input class="form__text-input form__text-input_name" type="text" name="name" placeholder="Name"
+                        <input type="text" name="name" class="form__text-input form__text-input_name" 
                             id="name">
-                        <input class="form__text-input form__text-input_job" type="text" name="job" placeholder="Job"
+                        <input type="text" name="job" class="form__text-input form__text-input_job" 
                             id="job">
                         <button type="submit" class="form__submit-btn">Save</button>
                     </fieldset>
@@ -110,8 +108,7 @@
 
             </div>
         </div>
-        <script src="scripts.js"></script>
-        -->
+        <script src="./scripts.js"></script>
 </body>
 
 </html>
