@@ -4,8 +4,7 @@
 
 [Link to the Project](https://gal717358.github.io/web_project_4/)
 
-the project's name; Around The U.S.
-a description of the project: The project shown a profile of social media platform of a famouse explorer that share with everybody
-about nice places to travel.
-a description of technologies and techniques used: In this project we used with a combination of HTML CSS and JS in order to make the profile responsive and informativ and to make him dinamic by this that we can actually to change inputes and to bring buttons to live.
+the project's name: Around The U.S.
+a description of the project: The project has shown a profile of social media platform of a famous explorer that shares with people nice places to travel.
+a description of technologies and techniques used: In this project, we used with a combination of HTML CSS, and JS in order to make the profile responsive and informativ and to make him dinamic by this that we can actually to change inputes and to bring buttons to live.
 
