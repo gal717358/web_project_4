@@ -7,10 +7,9 @@
     border: 1px solid white;
     cursor: pointer;
     background-color: transparent;
-    background-image: url(/images/Edit-button.svg);
+    background-image: url(./Edit-button.svg);
     background-repeat: no-repeat;
-    background-position: center;
-    
+    background-position: center; 
 }
 .profile__edit-btn:hover {
     opacity: 0.6;
