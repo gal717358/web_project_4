@@ -8,20 +8,16 @@
     margin-left: auto;
     margin-bottom: 7px;
     background-color: transparent;
+    background-image: url(/images/Add-button.svg);
+    background-repeat: no-repeat;
+    background-position: center;
     cursor: pointer;
 }
 .profile__add-btn:hover {
     opacity: 0.6;
     transition: 0.3s;
 }
-@media screen and (max-width: 580px) {
 
-    .profile__add-btn {
-        margin: 36px 19px 0;
-        max-width: 410px;
-        max-width: 90%;
-    }
-}
 @media screen and (max-width: 765px) {
     .profile__add-btn {
         margin: 36px 19px 0;

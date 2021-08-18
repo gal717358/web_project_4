@@ -11,3 +11,6 @@
     outline: none;
     margin-bottom: 30px;
 }
+.form__text-input:focus{
+    border-bottom:1.1px solid black;
+}

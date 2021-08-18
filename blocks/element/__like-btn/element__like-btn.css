@@ -1,8 +1,15 @@
 .element__like-btn {
     margin-right: 18px;
     background-color: transparent;
+    border: none;
+    
 }
 .element__like-btn:hover {
     opacity: 0.5;
     transition: 0.2s;
+}
+.element__like-btn:active{
+    background-image: url(./black-like.svg);
+    background-position: center;
+    background-repeat: no-repeat;
 }

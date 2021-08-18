@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./pages/style.css" />
+        <link rel="stylesheet" href="./pages/index.css" />
         <title>Around The U.S.</title>
     </head>
 
@@ -20,59 +20,55 @@
                     <div class="profile__info">
                         <div class="profile__info-top">
                             <h1 class="profile__title">Jacques Cousteau</h1>
-                            <button class="profile__edit-btn">
-                                <img src="./images/Vector.png" alt="edit button" />
-                            </button>
+                            <button class="profile__edit-btn" aria-label="edit button" name="edit button"></button>
                         </div>
                         <p class="profile__job">Explorer</p>
                     </div>
-                    <button class="profile__add-btn">
-                        <img src="./images/add btn.png" alt="add btn" />
-                    </button>
+                    <button class="profile__add-btn" aria-label="add button" name="add button"></button>
                 </div>
 
                 <section class="elements">
                     <div class="element">
                         <img src="./images/picture-num-1.png" alt="Yosemite Valley" class="element__image" />
                         <div class="element__description">
-                            <p class="element__title">Yosemite Valley</p>
-                            <a href="#" target="_blank" > <img class="element__like-btn" src="./blocks/element/__like-btn/like-button.png" alt="like button" /></a>
+                            <h3 class="element__title">Yosemite Valley</h3>
+                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" id="like1" /></button>
                         </div>
                     </div>
-                    <div class="element">
+                    <div class="element">a
                         <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Lake Louise" class="element__image" />
                         <div class="element__description">
-                            <p class="element__title">Lake Louise</p>
-                            <a href="#" target="_blank" > <img class="element__like-btn" src="./blocks/element/__like-btn/like-button.png" alt="like button"/></a>
+                            <h3 class="element__title">Lake Louise</h3>
+                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" id="like2" /></button>
                         </div>
                     </div>
 
                     <div class="element">
                         <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Bald Mountains" class="element__image" />
                         <div class="element__description">
-                            <p class="element__title">Bald Mountains</p>
-                            <a href="#" target="_blank" > <img class="element__like-btn" src="./blocks/element/__like-btn/like-button.png" alt="like button"/></a>
+                            <h3 class="element__title">Bald Mountains</h3>
+                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" id="like3" /></button>
                         </div>
                     </div>
                     <div class="element">
                         <img src="./images/kirill-pershin-1404681-.png" alt="Latemar" class="element__image" />
                         <div class="element__description">
-                            <p class="element__title">Latemar</p>
-                            <a href="#" target="_blank" > <img class="element__like-btn" src="./blocks/element/__like-btn/like-button.png" alt="like button"/></a>
+                            <h3 class="element__title">Latemar</h3>
+                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" id="like4" /></button>
                         </div>
                     </div>
                     <div class="element">
-                        <img src="./images/kirill-pershin-1556355-unsplash 5.png" alt="Vanoise National" class="element__image" />
+                        <img src="./images/kirill-pershin-1556355-unsplash-5.png" alt="Vanoise National" class="element__image" />
                         <div class="element__description">
-                            <p class="element__title">Vanoise Nationa...</p>
-                            <a href="#" target="_blank" > <img class="element__like-btn" src="./blocks/element/__like-btn/like-button.png" alt="like button"/></a>
+                            <h3 class="element__title">Vanoise National</h3>
+                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" id="like5" /></button>
                         </div>
                     </div>
                     <div class="element">
                         <img src="./images/pcture-num-6.png" alt="Lago di Braies" class="element__image" />
                         <div class="element__description">
-                            <p class="element__title">Lago di Braies</p>
-                            <a href="#" target="_blank" > <img class="element__like-btn" src="./blocks/element/__like-btn/like-button.png" alt="like button"/></a>
+                            <h3 class="element__title">Lago di Braies</h3>
+                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" id="like6" /></button>
                         </div>
                     </div>
                 </section>
@@ -80,22 +76,20 @@
             <footer class="footer">
                 <p class="footer__copyright">© 2021 Around The U.S.</p>
             </footer>
-            <div class="modal modal_opened">
+            <div class="modal modal_closed">
                 <div class="modal__container">
-                    <button type="button" class="modal__close-btn">
-                        <img src="./images/Close-Icon.png" alt="Close icon" />
-                    </button>
-                    <form class="form" action="/">
+                    <button type="button" class="modal__close-btn" aria-label="close button" name="close button"></button>
+                    <form class="form" action="/" name="form">
                         <fieldset class="form__fieldset">
                             <h2 class="form__title">Edit Profile</h2>
-                            <input type="text" name="name" class="form__text-input form__text-input_name" id="name" />
-                            <input type="text" name="job" class="form__text-input form__text-input_job" id="job" />
-                            <button type="submit" class="form__submit-btn">Save</button>
+                            <input type="text" name="name" class="form__text-input form__text-input_type_name" id="name" />
+                            <input type="text" name="job" class="form__text-input form__text-input_type_job" id="job" />
+                            <button type="submit" name="submit button" class="form__submit-btn">Save</button>
                         </fieldset>
                     </form>
                 </div>
             </div>
-            <script src="./scripts.js"></script>
+            <script src="./scripts/scripts.js"></script>
         </div>
     </body>
 </html>

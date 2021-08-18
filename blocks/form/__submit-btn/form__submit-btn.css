@@ -1,6 +1,6 @@
 .form__submit-btn {
     box-sizing: border-box;
-    padding: 0;
+    padding-bottom: 0;
     background-color: #000;
     color: #fff;
     cursor: pointer;
