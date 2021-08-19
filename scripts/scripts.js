@@ -11,9 +11,9 @@ let inputJob = document.querySelector(".form__text-input_type_job");
 let submitBtn = document.querySelector(".form__submit-btn");
 
 function profileEditor() {
-    if (modal.classList.toggle("modal_closed"));
-    else inputName.value = profileName.textContent;
-    inputJob.value = profileJob.textContent;
+    if (modal.classList.toggle("modal_closed")){}
+    else {inputName.value = profileName.textContent;
+    inputJob.value = profileJob.textContent;}   
 }
 
 profileEditBtn.addEventListener("click", profileEditor);

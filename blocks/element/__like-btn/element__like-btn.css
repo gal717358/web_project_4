@@ -2,8 +2,7 @@
     margin-right: 18px;
     background-color: transparent;
     border: none;
-    cursor: pointer;
-    
+    cursor: pointer; 
 }
 .element__like-btn:hover {
     opacity: 0.5;
