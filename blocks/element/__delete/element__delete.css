@@ -1,0 +1,16 @@
+.element__delete{
+    background-position: center;
+    height: 19px;
+    width: 21px;
+    background-color:transparent;
+    position: absolute;
+    right: 15px;
+    top: 18px;
+    border: none;
+    cursor: pointer;
+    filter: drop-shadow(2px 2px 5px rgba(0 0 0 / 0.8));
+
+}
+.element__delete:hover{
+    opacity: 0.6;
+}

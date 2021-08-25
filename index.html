@@ -27,49 +27,9 @@
                     <button class="profile__add-btn" aria-label="add button" name="add button" type="button"></button>
                 </div>
 
-                <section class="elements">
-                    <div class="element">
-                        <img src="./images/picture-num-1.png" alt="Yosemite Valley" class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title">Yosemite Valley</h2>
-                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" /></button>
-                        </div>
-                    </div>
-                    <div class="element">
-                        <img src="./images/kirill-pershin-1404681-unsplash.png" alt="Lake Louise" class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title">Lake Louise</h2>
-                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button"  /></button>
-                        </div>
-                    </div>
+                <section class="elements">  
+                    <div class="element"> 
 
-                    <div class="element">
-                        <img src="./images/kirill-pershin-1556355-unsplash.png" alt="Bald Mountains" class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title">Bald Mountains</h2>
-                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button"  /></button>
-                        </div>
-                    </div>
-                    <div class="element">
-                        <img src="./images/kirill-pershin-1404681-.png" alt="Latemar" class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title">Latemar</h2>
-                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" /></button>
-                        </div>
-                    </div>
-                    <div class="element">
-                        <img src="./images/kirill-pershin-1556355-unsplash-5.png" alt="Vanoise National" class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title">Vanoise National</h2>
-                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" /></button>
-                        </div>
-                    </div>
-                    <div class="element">
-                        <img src="./images/pcture-num-6.png" alt="Lago di Braies" class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title">Lago di Braies</h2>
-                            <button type="button" class="element__like-btn"><img src="./images/like-btn.svg" alt="like button" /></button>
-                        </div>
                     </div>
                 </section>
             </main>
@@ -89,7 +49,39 @@
                     </form>
                 </div>
             </div>
-            <script src="./scripts/scripts.js"></script>
+            <div class="modal modal_type_add-element modal_closed">
+                <div class="modal__container">
+                    <button type="button" class="modal__close-btn" aria-label="close button" name="close button"></button>
+                    <form class="form-element" action="/" name="form__add-element">
+                        <fieldset class="form__fieldset">
+                            <h2 class="form__title">New place</h2>
+                            <input type="text" name="name-element" class="form__text-input form__text-input_type_name-element" id="name-element" placeholder="Title" />
+                            <input type="url" name="img-element" class="form__text-input form__text-input_type_img-element id=" id="img-element" placeholder="Image Url" />
+                            <button type="submit" name="submit button" class="form__submit-btn">Create</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+            <template id="element-template">
+                <div class="elements">
+                    <div class="element">
+                        <button type="button" class="element__delete" name="delete buttom"><img src="./images/Trash.png" alt="delete"></button>
+                        <img class="element__image element__image_btn" />
+                        <div class="element__description">
+                            <h2 class="element__title"></h2>
+                            <button type="button" class="element__like-btn" aria-label="like-buttom"><img src="./images/like-btn.svg" alt="like-btn"></button>
+                        </div>
+                    </div>
+                </div>
+            </template>
+            <div class="modal modal_type_pop-up modal_closed">
+                <div class="modal__container">
+                    <button type="button" class="modal__close-btn" aria-label="close button" name="close button"></button>
+                    <img class="pop-up__img" />
+                    <h2 class="pop-up__title"></h2>
+                </div>
+            </div>
+            <script type="module" src="./scripts/scripts.js"></script>
         </div>
     </body>
 </html>
