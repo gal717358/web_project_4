@@ -1,14 +1,12 @@
-.modal {
+.modal_type_pop-up{
     position: fixed;
-    width: 100%;
-    height: 100vh;
+    width: 433px;
+    height: 540px;
     left: 0;
     top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
-    visibility: visible;
-    opacity: 1;
-    transition: visibility 0s, opacity 0.5s ease-in-out;
+
 }
