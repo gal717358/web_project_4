@@ -36,7 +36,7 @@
 @import url(..//blocks/form/__title/form__title.css);
 @import url(..//blocks/form/__text-input/form__text-input.css);
 @import url(..//blocks/form/__submit-btn/form__submit-btn.css);
-@import url(..//blocks/form/__fieldset/form__fieldset.css);
+@import url(..//blocks/form/__fieldset/form_fieldset.css);
 @import url(..//blocks/modal/__container/modal__container_type_popup.css);
 @import url(..//blocks/modal/__image/pop-up__img.css);
 @import url(..//blocks/modal/__pop-up/pop-up__title.css);
