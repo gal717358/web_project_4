@@ -23,7 +23,7 @@ const element = templateElement.cloneNode(true);
 
 //pop up
 const modalPopup = document.querySelector(".modal_type_pop-up");
-const closePopupBtn = document.querySelector(".modal__close_popup");
+const closePopupBtn = document.querySelector(".modal__close-popup");
 const modalpopupContainer = document.querySelector("modal__container_type_popup");
 const largeImage = document.querySelector(".modal__img");
 const popupTitle = document.querySelector(".modal__title");
