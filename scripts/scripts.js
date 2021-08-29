@@ -1,14 +1,13 @@
 const modal = document.querySelector(".modal");
-const modalClose = document.querySelector(".modal_closed");
-const modalContainer = document.querySelector(".modal__container");
+const profileModal = document.querySelector(".modal_type_profile");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
-const closeButton = document.querySelector(".modal__close-btn");
-const formElement = document.querySelector(".form");
+const closeProfileBtn = profileModal.querySelector(".modal__close-profile");
+const closeButton = profileModal.querySelector(".modal__close-btn");
+const formElement = profileModal.querySelector(".form");
 const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__job");
 const inputName = document.querySelector(".form__text-input_type_name");
 const inputJob = document.querySelector(".form__text-input_type_job");
-const submitBtn = document.querySelector(".form__submit-btn");
 
 //modals
 const modalAddelement = document.querySelector(".modal_type_add-element");
@@ -92,18 +91,24 @@ submitAddCard.addEventListener("click", function (e) {
     e.preventDefault();
     addElement({ name: title.value, link: url.value });
     modalAddelement.classList.add("modal_closed");
+    title.value="";
+    url.value= "";
 });
 
 profileEditBtn.addEventListener("click", () => {
     modal.classList.remove("modal_closed");
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
+    openPopup(modal);
 });
+
 closeButton.addEventListener("click", () => {
     modal.classList.add("modal_closed");
+    closePopup(modal);
 });
 closePopupBtn.addEventListener("click", () => {
     modalPopup.classList.add("modal_closed");
+    closePopup(modalPopup);
 });
 
 function handleFormSubmit(evt) {
@@ -116,7 +121,9 @@ formElement.addEventListener("submit", handleFormSubmit);
 
 addCardbtn.addEventListener("click", () => {
     modalAddelement.classList.remove("modal_closed");
+    openPopup( modalAddelement);
 });
 closeAddBtn.addEventListener("click", () => {
     modalAddelement.classList.add("modal_closed");
+    closePopup( modalAddelement);
 });
