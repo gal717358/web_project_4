@@ -76,7 +76,7 @@ function addElement(el) {
         element.remove();
     });
     elementImage.addEventListener("click", () => {
-        modalPopup.classList.remove("modal_closed");
+        openPopUp(modalPopup);
         popupTitle.textContent = el.name;
         popupTitle.setAttribute("alt", el.name);
         largeImage.setAttribute("src", el.link);
@@ -90,7 +90,7 @@ initialElements.forEach(addElement);
 submitAddCard.addEventListener("click", function (e) {
     e.preventDefault();
     addElement({ name: title.value, link: url.value });
-    modalAddelement.classList.add("modal_closed");
+    closePopup(modalAddelement);
     title.value="";
     url.value= "";
 });
