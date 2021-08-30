@@ -95,35 +95,43 @@ submitAddCard.addEventListener("click", function (e) {
     url.value= "";
 });
 
+const openPopUp = popup => {
+    popup.classList.remove("modal_closed");
+}
+
+const closePopup = popup => {
+    popup.classList.add("modal_closed");
+}
+
 profileEditBtn.addEventListener("click", () => {
-    modal.classList.remove("modal_closed");
+    openPopUp(modal);
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
-    openPopup(modal);
+    
 });
 
 closeButton.addEventListener("click", () => {
-    modal.classList.add("modal_closed");
     closePopup(modal);
 });
+
 closePopupBtn.addEventListener("click", () => {
-    modalPopup.classList.add("modal_closed");
     closePopup(modalPopup);
+    
 });
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
     profileName.textContent = `${inputName.value}`;
     profileJob.textContent = `${inputJob.value}`;
-    modal.classList.add("modal_closed");
+    closePopup(modal);
 }
 formElement.addEventListener("submit", handleFormSubmit);
 
+
 addCardbtn.addEventListener("click", () => {
-    modalAddelement.classList.remove("modal_closed");
-    openPopup( modalAddelement);
+    openPopUp(modalAddelement);   
 });
-closeAddBtn.addEventListener("click", () => {
-    modalAddelement.classList.add("modal_closed");
-    closePopup( modalAddelement);
+
+closeAddBtn.addEventListener("click", () => {  
+    closePopup(modalAddelement);
 });
