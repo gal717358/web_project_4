@@ -15,6 +15,7 @@
     opacity: 0.8;
     transition: 0.3s;
 } 
+
 @media screen and (max-width: 580px) {
     .form__submit-btn {
         font-size: 14px;

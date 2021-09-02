@@ -8,6 +8,7 @@ const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__job");
 const inputName = document.querySelector(".form__text-input_type_name");
 const inputJob = document.querySelector(".form__text-input_type_job");
+let modalClosed = document.querySelector(".modal_closed");
 
 //modals
 const modalAddelement = document.querySelector(".modal_type_add-element");
@@ -91,23 +92,39 @@ submitAddCard.addEventListener("click", function (e) {
     e.preventDefault();
     addElement({ name: title.value, link: url.value });
     closePopup(modalAddelement);
-    title.value="";
-    url.value= "";
+    title.value = "";
+    url.value = "";
 });
 
-const openPopUp = popup => {
-    popup.classList.remove("modal_closed");
+function closeWithKeyHandler(evt) {
+    if (evt.key === "Escape") {
+        closePopup(modalClosed);
+    }
 }
 
-const closePopup = popup => {
-    popup.classList.add("modal_closed");
+function closeWithOverleyHandler(evt) {
+    if (evt.target === evt.currentTarget) {
+        closePopup(modalClosed);
+    }
 }
+
+const openPopUp = (popup) => {
+    popup.classList.remove("modal_closed");
+    document.addEventListener("keydown", closeWithKeyHandler);
+    popup.addEventListener("click", closeWithOverleyHandler);
+    modalClosed = popup;
+};
+
+const closePopup = (popup) => {
+    popup.classList.add("modal_closed");
+    document.removeEventListener("keydown", closeWithKeyHandler);
+    popup.removeEventListener("click", closeWithOverleyHandler);
+};
 
 profileEditBtn.addEventListener("click", () => {
     openPopUp(modal);
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
-    
 });
 
 closeButton.addEventListener("click", () => {
@@ -116,7 +133,6 @@ closeButton.addEventListener("click", () => {
 
 closePopupBtn.addEventListener("click", () => {
     closePopup(modalPopup);
-    
 });
 
 function handleFormSubmit(evt) {
@@ -127,11 +143,10 @@ function handleFormSubmit(evt) {
 }
 formElement.addEventListener("submit", handleFormSubmit);
 
-
 addCardbtn.addEventListener("click", () => {
-    openPopUp(modalAddelement);   
+    openPopUp(modalAddelement);
 });
 
-closeAddBtn.addEventListener("click", () => {  
+closeAddBtn.addEventListener("click", () => {
     closePopup(modalAddelement);
 });
