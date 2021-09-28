@@ -1,19 +1,18 @@
-class FormValidator{
-    constructor(settings, formElement){
+class FormValidator {
+    constructor(settings, formElement) {
         this.settings = settings;
         this.formElement = formElement;
     }
     _showError = (input, errorMessage) => {
-        const {inputErrorClass, errorClass} = this.settings
-
+        const { inputErrorClass, errorClass } = this.settings;
         const errorElement = this.formElement.querySelector(`#${input.id}-error`);
         input.classList.add(inputErrorClass);
         errorElement.textContent = errorMessage;
-        errorElement.classList.add(errorClass);     
+        errorElement.classList.add(errorClass);
     };
 
     _hideError = (input) => {
-        const {inputErrorClass, errorClass} = this.settings
+        const { inputErrorClass, errorClass } = this.settings;
 
         const errorElement = this.formElement.querySelector(`#${input.id}-error`);
         errorElement.textContent = "";
@@ -23,61 +22,47 @@ class FormValidator{
 
     _checkValidity = (input) => {
         if (input.validity.valid) {
-            this._hideError(input, input.validationMessage);
+            this._hideError(input);
         } else {
-            this._showError(input);
+            this._showError(input, input.validationMessage);
         }
+        return this.formElement;
     };
 
-    _setEventListiners = () => {
-        const {inputSelector} = this.settings
+    _setEventListeners = () => {
+        const { inputSelector } = this.settings;
         this.inputs = Array.from(this.formElement.querySelectorAll(inputSelector));
-           
+
         this.inputs.forEach((input) => {
             input.addEventListener("input", () => {
-                    this._checkValidity(input);
-                    this._toogleButtonState();
-                });
-            });   
+                this._checkValidity(input);
+                this._toggleButtonState();
+            });
+        });
+        return this.formElement;
     };
-    _ifFormValid = () => this.inputs.every(input => input.validity.valid)
+    _ifFormValid = () => this.inputs.every((input) => input.validity.valid);
 
-    _toogleButtonState = () => {
-        const {inactiveButtonClass} = this.settings
-        const buttonElememnt = this.formElement.querySelector(submitButtonSelector);
+    _toggleButtonState = () => {
+        const { inactiveButtonClass, submitButtonSelector } = this.settings;
+        const buttonElement = this.formElement.querySelector(submitButtonSelector);
 
-        if (this._ifFormValid) {
-            buttonElememnt.disabled = false;
-            buttonElememnt.classList.remove(inactiveButtonClass);
+        if (this._ifFormValid()) {
+            buttonElement.disabled = false;
+            buttonElement.classList.remove(inactiveButtonClass);
         } else {
-            buttonElememnt.disabled = "disabled";
-            buttonElememnt.classList.add(inactiveButtonClass);
+            buttonElement.disabled = "disabled";
+            buttonElement.classList.add(inactiveButtonClass);
         }
     };
 
-    restValidation(){
-        this.inputs.forEach(input => {
-            this._hideError(input)
-        })
-
+    resetValidation() {
+        this.inputs.forEach((input) => {
+            this._hideError(input);
+        });
     }
-    enableValidation() { 
-    this._setEventListiners();s
+    enableValidation() {
+        this._setEventListeners();
     }
 }
-    export default FormValidator
-
-    const settings = {
-        formSelector: ".form",
-        inputSelector: ".form__text-input",
-        submitButtonSelector: ".form__submit-btn",
-        inactiveButtonClass: "form__submit-btn_disabled",
-        inputErrorClass: "form__text-input_theme_error",
-        errorClass: "form__input-error",
-    }
-    
-    const editForm =  document.querySelector(".modal_type_profile")
-    const addCardForm = document.querySelector(".modal_type_add-element")
-    
-    const editFormValidator = new FormValidator (settings, editForm)
-    const addCardFormValidator = new FormValidator (settings, addCardForm)
+export default FormValidator;

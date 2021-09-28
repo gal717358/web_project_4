@@ -18,6 +18,8 @@ const addCardFormValidator = new FormValidator (settings, addCardForm)
 
 editFormValidator.enableValidation()
 addCardFormValidator.enableValidation()
+
+
 //edit profile
 const modal = document.querySelector(".modal");
 const profileModal = document.querySelector(".modal_type_profile");
@@ -31,10 +33,10 @@ const inputJob = document.querySelector(".form__text-input_type_job");
 let modalClosed = document.querySelector(".modal_closed");
 
 //modals
-const modalAddelement = document.querySelector(".modal_type_add-element");
-const closeAddBtn = modalAddelement.querySelector(".modal__close-btn");
-const submitAddCard = modalAddelement.querySelector(".form__submit-btn");
-const addCardbtn = document.querySelector(".profile__add-btn");
+const modalAddElement = document.querySelector(".modal_type_add-element");
+const closeAddBtn = modalAddElement.querySelector(".modal__close-btn");
+const submitAddCard = modalAddElement.querySelector(".form__submit-btn");
+const addCardBtn = document.querySelector(".profile__add-btn");
 
 //create cards
 const templateElement = document.querySelector("#element-template").content.querySelector(".element");
@@ -56,7 +58,7 @@ function closeWithKeyHandler(evt) {
     }
 }
 
-function closeWithOverleyHandler(evt) {
+function closeWithOverlayHandler(evt) {
     if (evt.target === evt.currentTarget) {
         closePopup(modalClosed);
     }
@@ -65,17 +67,18 @@ function closeWithOverleyHandler(evt) {
 const openPopUp = (popup) => {
     popup.classList.remove("modal_closed");
     document.addEventListener("keydown", closeWithKeyHandler);
-    popup.addEventListener("click", closeWithOverleyHandler);
+    popup.addEventListener("click", closeWithOverlayHandler);
     modalClosed = popup;
 };
 
 const closePopup = (popup) => {
     popup.classList.add("modal_closed");
     document.removeEventListener("keydown", closeWithKeyHandler);
-    popup.removeEventListener("click", closeWithOverleyHandler);
+    popup.removeEventListener("click", closeWithOverlayHandler);
 };
 
 profileEditBtn.addEventListener("click", () => {
+    editFormValidator.resetValidation()
     openPopUp(modal);
     inputName.value = profileName.textContent;
     inputJob.value = profileJob.textContent;
@@ -96,12 +99,13 @@ function handleFormSubmit(evt) {
     closePopup(modal);
 }
 formElement.addEventListener("submit", handleFormSubmit);
-addCardbtn.addEventListener("click", () => {
-    openPopUp(modalAddelement);
+addCardBtn .addEventListener("click", () => {
+    addCardFormValidator.resetValidation()
+    openPopUp(modalAddElement);
 });
 
 closeAddBtn.addEventListener("click", () => {
-    closePopup(modalAddelement);
+    closePopup(modalAddElement);
 });
 submitAddCard.addEventListener("click", function (e) {
     e.preventDefault();
@@ -109,7 +113,7 @@ submitAddCard.addEventListener("click", function (e) {
     const name = title.value;
     const cardInstance = new Card({ link, name }, templateElement);
     elementsBlock.prepend(cardInstance.generateCard({ name, link }));
-    closePopup(modalAddelement);
+    closePopup(modalAddElement);
     title.value = "";
     url.value = "";
 });
