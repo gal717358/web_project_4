@@ -37,7 +37,7 @@
             <div class="modal modal_type_profile modal_closed">
                 <div class="modal__container">
                     <button type="button" class="modal__close-btn modal__close-profile" aria-label="close button" name="close button"></button>
-                    <form class="form" action="/" name="form" novalidate>
+                    <form class="form form-profile" action="/" name="form" novalidate>
                         <fieldset class="form__fieldset">
                             <h2 class="form__title">Edit Profile</h2>
                             <input id="name-input" type="text" name="name" class="form__text-input form__text-input_type_name" minlength="2" maxlength="40" required />
@@ -81,14 +81,12 @@
             <div class="modal modal_type_pop-up modal_closed">
                 <div class="modal__container modal__container_type_popup">
                     <button type="button" class="modal__close-btn modal__close-popup" aria-label="close button popup" name="popup close button"></button>
-                    <img class="modal__img" alt="/" src="/"/>
+                    <img class="modal__img" alt="/" src="/" />
                     <h2 class="modal__title"></h2>
                 </div>
             </div>
             <script type="module" src="./scripts/scripts.js"></script>
-            <script type="module" src="./scripts/validation.js"></script>
-            <script type="module" src="./scripts/card.js"></script>
+           <!--<script type="module" src="./scripts/FormValidator.js"></script> -->
         </div>
     </body>
 </html>
-

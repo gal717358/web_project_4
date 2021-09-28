@@ -1,9 +1,3 @@
-class FormValidator{
-    constructor(settings,formElement){
-        this._settings = settings;
-        this._formElement= formElement
-    }
-}
 
 function showError(input, settings) {
     const error = input.validationMessage;
@@ -60,7 +54,7 @@ const config = {
     submitButtonSelector: ".form__submit-btn",
     inactiveButtonClass: "form__submit-btn_disabled",
     inputErrorClass: "form__text-input_theme_error",
-    errorClass: "popup__error_visible",
+    errorClass: "form__input-error",
 };
 
 enableValidation(config);

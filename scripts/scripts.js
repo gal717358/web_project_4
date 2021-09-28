@@ -1,5 +1,23 @@
-import {Card, initialElements} from "./card.js"
+import {Card, initialElements} from "./card.js";
+import FormValidator from "./FormValidator.js";
 
+const settings = {
+    formSelector: ".form",
+    inputSelector: ".form__text-input",
+    submitButtonSelector: ".form__submit-btn",
+    inactiveButtonClass: "form__submit-btn_disabled",
+    inputErrorClass: "form__text-input_theme_error",
+    errorClass: "form__input-error",
+}
+
+const editForm =  document.querySelector(".modal_type_profile")
+const addCardForm = document.querySelector(".modal_type_add-element")
+
+const editFormValidator = new FormValidator (settings, editForm)
+const addCardFormValidator = new FormValidator (settings, addCardForm)
+
+editFormValidator.enableValidation()
+addCardFormValidator.enableValidation()
 //edit profile
 const modal = document.querySelector(".modal");
 const profileModal = document.querySelector(".modal_type_profile");
@@ -26,20 +44,10 @@ const element = templateElement.cloneNode(true);
 //pop up
 const modalPopup = document.querySelector(".modal_type_pop-up");
 const closePopupBtn = document.querySelector(".modal__close-popup");
-const modalpopupContainer = document.querySelector("modal__container_type_popup");
 const largeImage = document.querySelector(".modal__img");
 const popupTitle = document.querySelector(".modal__title");
-const elementLikeActive = document.querySelector(".element__like-btn_active");
 const url = document.querySelector(".form__text-input_type_img-element");
 const title = document.querySelector(".form__text-input_type_name-element");
-
-
-initialElements.forEach((ele) => {
-	const card = new Card(ele);
-	const templateElement = card.generateCard();
-
- document.querySelector(".elements").prepend(templateElement);
-});
 
 
 function closeWithKeyHandler(evt) {
@@ -105,3 +113,5 @@ submitAddCard.addEventListener("click", function (e) {
     title.value = "";
     url.value = "";
 });
+ export {largeImage,popupTitle,modalPopup,openPopUp};
+
