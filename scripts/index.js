@@ -1,6 +1,6 @@
 import {Card,} from "./card.js";
 import FormValidator from "./FormValidator.js";
-import { initialElements } from "./Constants.js";
+import { initialElements } from "./constants.js";
 
 const settings = {
   formSelector: ".form",
@@ -30,7 +30,7 @@ const profileName = document.querySelector(".profile__title");
 const profileJob = document.querySelector(".profile__job");
 const inputName = document.querySelector(".form__text-input_type_name");
 const inputJob = document.querySelector(".form__text-input_type_job");
-let openedModal = document.querySelector(".modal_closed");
+let openedModal;
 
 //modals
 const modalAddElement = document.querySelector(".modal_type_add-element");
@@ -55,9 +55,9 @@ const title = document.querySelector(".form__text-input_type_name-element");
 
 initialElements.forEach((element) => {
   const card = new Card(element);
-  const templateElement = card.generateCard();
+  const cardElement = card.generateCard();
 
-  elementsBlock.prepend(templateElement);
+  elementsBlock.prepend(cardElement);
 });
 
 function closeWithKeyHandler(evt) {
