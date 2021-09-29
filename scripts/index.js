@@ -125,4 +125,5 @@ submitAddCard.addEventListener("click", function (e) {
   title.value = "";
   url.value = "";
 });
+
 export { largeImage, popupTitle, modalPopup, openPopUp};
