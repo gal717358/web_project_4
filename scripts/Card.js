@@ -1,10 +1,11 @@
-import { largeImage, popupTitle, modalPopup, openPopUp} from "./index.js";
+import { largeImage, popupTitle, modalPopup, openPopUp} from "../src/index.js";
 
 class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
