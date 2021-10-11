@@ -18,7 +18,12 @@ close(){
     document.removeEventListener("keyup", this._handleEscClose)
 }
 setEventListeners(){
-    this._popupElement.querySelector(".modal__close-btn").addEventListener("click", this.close)
+    this._popupElement.querySelector(".modal__close-btn").addEventListener("click", this.close());
+    this._popupElement.addEventListener("click", (evt)=>{
+        if (evt.target.classList.contains('modal')) {
+            this.close();
+        }
+    })
 }
 }
 

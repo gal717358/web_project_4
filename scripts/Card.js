@@ -1,5 +1,3 @@
-import { largeImage, popupTitle, modalPopup, openPopUp} from "../src/index.js";
-
 class Card {
   constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
@@ -37,12 +35,8 @@ class Card {
     elementDeleteBtn.addEventListener("click", () => {
       this._element.remove();
     });
-    elementImage.addEventListener("click", () => {
-      openPopUp(modalPopup);
-      popupTitle.textContent = this._name;
-      popupTitle.setAttribute("alt", `Photo of ${this._name}`);
-      largeImage.setAttribute("src", this._link);
-    });
+    this._element.querySelector(".element__image")
+    .addEventListener("click", () => this._handleCardClick);
   }
 }
 

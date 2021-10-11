@@ -3,6 +3,7 @@ export default class Section {
       this._renderedItems = items;
       this._renderer = renderer;
       this._container = document.querySelector(containerSelector);
+      this.renderer = renderer;
     }
   
     setItem(element) {
@@ -14,11 +15,10 @@ export default class Section {
       }
   
     renderItems() {
-      this.clear();
-  
-      this._renderedItems.forEach(item => {
-        this._renderer(item);
-      });
+      
+      this._renderedItems.forEach((item) => {
+        this._renderer(item)
+      })
     }
+
   }
-  
