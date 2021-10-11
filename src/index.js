@@ -54,19 +54,20 @@ userInfoHolder.setUserInfo({ name: "Jacques Cousteau", job: "explorer" });
 
 //section class
 const cardSection = new Section(
-    {
-        items: initialElements,
-        renderer: (data) => {
-            let cardHolder = new Card(data, settings);
-            cardHolder = cardHolder.generateCard();
-            cardSection.setItem(cardHolder);
-            imageModal.open(data.name,data.link);
-           
-        },
-    },
-    ".elements"
+  {
+      items: initialElements,
+      renderer: (data) => {
+          let cardHolder = new Card(data, settings);
+          cardHolder = cardHolder.generateCard();
+          cardSection.setItem(cardHolder);
+          cardHolder.querySelector('.element__image').
+          addEventListener("click",imageModal.open);
+      },
+  },
+  ".elements"
 );
 cardSection.renderItems();
+
 // card render
 const cardRenderer = (newCard) => {
   const cardElement = new Card(newCard, templateElement)
@@ -101,7 +102,6 @@ addCardBtn.addEventListener("click", () => {
     addCardFormValidator.resetValidation();
     addPopup.open();
 });
-
 closeAddBtn.addEventListener("click", () => addPopup.close());
 closeButton.addEventListener("click", () => editModal.close());
 closePopupBtn.addEventListener("click", () => imageModal.close());

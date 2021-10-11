@@ -1,13 +1,15 @@
 import { Popup } from "./Popup.js";
 
-export class PopupWithImage extends Popup{
-    open(name,link){
-        const imageElement = this._popupElement.querySelector(".modal__img")
-        const caption = this._popupElement.querySelector(".modal__title")
+export class PopupWithImage extends Popup {
 
-        imageElement.src = link
-        caption.textContent = name
+    open = (evt) => {
 
-        super.open()
-    }
+        super.open();
+        const cardImage = evt.target;
+        console.log(this.popupElement)
+
+        this._popupElement.querySelector(".modal__img").src = cardImage.src;
+
+        this._popupElement.querySelector(".modal__title").textContent = cardImage.alt;
+    };
 }
