@@ -15,24 +15,18 @@ const settings = {
     errorClass: "form__input-error",
 };
 
-const editForm = document.querySelector(".modal_type_profile");
-const addCardForm = document.querySelector(".modal_type_add-element");
 
 //edit profile
 const modal = document.querySelector(".modal");
 const profileModal = document.querySelector(".modal_type_profile");
+const editForm = document.querySelector(".modal_type_profile");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const closeButton = profileModal.querySelector(".modal__close-btn");
 const formElement = profileModal.querySelector(".form");
-const profileName = document.querySelector(".profile__title");
-const profileJob = document.querySelector(".profile__job");
-const inputName = document.querySelector(".form__text-input_type_name");
-const inputJob = document.querySelector(".form__text-input_type_job");
 
 //modals
-const modalAddElement = document.querySelector(".modal_type_add-element");
-const closeAddBtn = modalAddElement.querySelector(".modal__close-btn");
-const submitAddCard = modalAddElement.querySelector(".form__submit-btn");
+const addCardForm = document.querySelector(".modal_type_add-element");
+const closeAddBtn = addCardForm.querySelector(".modal__close-btn");
 const addCardBtn = document.querySelector(".profile__add-btn");
 
 //create cards
@@ -43,12 +37,7 @@ const element = templateElement.cloneNode(true);
 //pop up
 const modalPopup = document.querySelector(".modal_type_pop-up");
 const closePopupBtn = document.querySelector(".modal__close-popup");
-const largeImage = document.querySelector(".modal__img");
-const popupTitle = document.querySelector(".modal__title");
 const elementImage = document.querySelector(".element__image");
-const url = document.querySelector(".form__text-input_type_img-element");
-const title = document.querySelector(".form__text-input_type_name-element");
-
 
 // validation
 const editFormValidator = new FormValidator(settings, editForm);
@@ -56,8 +45,9 @@ const addCardFormValidator = new FormValidator(settings, addCardForm);
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
-const imageModal = new PopupWithImage(".modal_type_pop-up");
+const imageModal = new PopupWithImage(".modal_type_pop-up")
 imageModal.setEventListeners();
+
 // UserInfo
 const userInfoHolder = new UserInfo(".profile__title", ".profile__job");
 userInfoHolder.setUserInfo({ name: "Jacques Cousteau", job: "explorer" });
@@ -71,15 +61,15 @@ const cardSection = new Section(
             cardHolder = cardHolder.generateCard();
             cardSection.setItem(cardHolder);
             imageModal.open(data.name,data.link);
+           
         },
     },
     ".elements"
 );
 cardSection.renderItems();
-
+// card render
 const cardRenderer = (newCard) => {
-  const cardElement = new Card(newCard, templateElement, (evt) => {
-  });
+  const cardElement = new Card(newCard, templateElement)
   const renderedCard = cardElement.generateCard();
   return renderedCard;
 };
@@ -88,7 +78,8 @@ const cardRenderer = (newCard) => {
 const addPopup = new PopupWithForm(".modal_type_add-element", () => {
   let newCard = addPopup.getInputValues();
   newCard = cardRenderer(newCard);
-  cardSection.addItem(newCard);
+  console.log(newCard)
+  elementsBlock.prepend(newCard);
   addPopup.close();
 });
 addPopup.setEventListeners();

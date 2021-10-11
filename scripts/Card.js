@@ -28,7 +28,6 @@ class Card {
   _setEventListeners() {
     const elementLikeBtn = this._element.querySelector(".element__like-btn");
     const elementDeleteBtn = this._element.querySelector(".element__delete");
-    const elementImage = this._element.querySelector(".element__image");
     elementLikeBtn.addEventListener("click", () => {
       elementLikeBtn.classList.toggle("element__like-btn_active");
     });
