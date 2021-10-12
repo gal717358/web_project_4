@@ -22,7 +22,7 @@ export class Popup {
     setEventListeners() {
       this._popupElement
         .querySelector(".modal__close-btn")
-        .addEventListener("click", close(this));
+        .addEventListener("click", this.close());
       this._popupElement.addEventListener("click", (evt) => {
         if (evt.target.classList.contains("modal")) {
           this.close();

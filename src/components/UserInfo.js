@@ -3,7 +3,7 @@ export class UserInfo {
     this._name = document.querySelector(profileName);
     this._job = document.querySelector(profileJob);
   }
-
+  
   getUserInfo() {
     const name = this._name.textContent;
     const job = this._job.textContent;
