@@ -1,8 +1,9 @@
-class FormValidator {
+export default class FormValidator {
   constructor(settings, formElement) {
     this.settings = settings;
     this.formElement = formElement;
   }
+
   _showError = (input, errorMessage) => {
     const { inputErrorClass, errorClass } = this.settings;
     const errorElement = this.formElement.querySelector(`#${input.id}-error`);
@@ -41,6 +42,7 @@ class FormValidator {
     });
     return this.formElement;
   };
+
   _checkIfFormValid = () => this.inputs.every((input) => input.validity.valid);
 
   _toggleButtonState = () => {
@@ -62,8 +64,9 @@ class FormValidator {
     });
     this._toggleButtonState();
   }
+
   enableValidation() {
     this._setEventListeners();
   }
 }
-export default FormValidator;
+

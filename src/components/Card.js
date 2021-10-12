@@ -1,4 +1,4 @@
-class Card {
+export class Card {
   constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
@@ -14,6 +14,7 @@ class Card {
 
     return templateElement;
   }
+
   generateCard() {
     this._element = this._getTemplate();
     this._setEventListeners();
@@ -32,11 +33,10 @@ class Card {
       elementLikeBtn.classList.toggle("element__like-btn_active");
     });
     elementDeleteBtn.addEventListener("click", () => {
-      this._element.remove();
+      this._element.remove(null);
     });
-    this._element.querySelector(".element__image")
-    .addEventListener("click", () => this._handleCardClick);
+    this._element
+      .querySelector(".element__image")
+      .addEventListener("click", this._handleCardClick);
   }
 }
-
-export { Card};
