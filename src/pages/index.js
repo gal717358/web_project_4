@@ -1,10 +1,11 @@
-import { Card } from "../scripts/Card.js";
-import FormValidator from "../scripts/FormValidator.js";
-import { initialElements } from "../scripts/constants.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import Section from "./Section.js";
-import { UserInfo } from "./UserInfo.js";
+import "../pages/index.css";
+import { Card } from "../components/Card.js";
+import FormValidator from "..//components/FormValidator.js";
+import { initialElements } from "../components/initialElements.js";
+import { PopupWithImage } from "..//components/PopupWithImage.js";
+import { PopupWithForm } from "..//components/PopupWithForm.js";
+import Section from "..//components/Section.js";
+import { UserInfo } from "..//components/UserInfo.js";
 
 const settings = {
     formSelector: ".form",
@@ -15,14 +16,11 @@ const settings = {
     errorClass: "form__input-error",
 };
 
-
 //edit profile
-const modal = document.querySelector(".modal");
 const profileModal = document.querySelector(".modal_type_profile");
 const editForm = document.querySelector(".modal_type_profile");
 const profileEditBtn = document.querySelector(".profile__edit-btn");
 const closeButton = profileModal.querySelector(".modal__close-btn");
-const formElement = profileModal.querySelector(".form");
 
 //modals
 const addCardForm = document.querySelector(".modal_type_add-element");
@@ -35,9 +33,7 @@ const elementsBlock = document.querySelector(".elements");
 const element = templateElement.cloneNode(true);
 
 //pop up
-const modalPopup = document.querySelector(".modal_type_pop-up");
 const closePopupBtn = document.querySelector(".modal__close-popup");
-const elementImage = document.querySelector(".element__image");
 
 // validation
 const editFormValidator = new FormValidator(settings, editForm);
@@ -45,7 +41,7 @@ const addCardFormValidator = new FormValidator(settings, addCardForm);
 editFormValidator.enableValidation();
 addCardFormValidator.enableValidation();
 
-const imageModal = new PopupWithImage(".modal_type_pop-up")
+const imageModal = new PopupWithImage(".modal_type_pop-up");
 imageModal.setEventListeners();
 
 // UserInfo
@@ -54,34 +50,33 @@ userInfoHolder.setUserInfo({ name: "Jacques Cousteau", job: "explorer" });
 
 //section class
 const cardSection = new Section(
-  {
-      items: initialElements,
-      renderer: (data) => {
-          let cardHolder = new Card(data, settings);
-          cardHolder = cardHolder.generateCard();
-          cardSection.setItem(cardHolder);
-          cardHolder.querySelector('.element__image').
-          addEventListener("click",imageModal.open);
-      },
-  },
-  ".elements"
+    {
+        items: initialElements,
+        renderer: (data) => {
+            let cardHolder = new Card(data, settings);
+            cardHolder = cardHolder.generateCard();
+            cardSection.setItem(cardHolder);
+            cardHolder.querySelector(".element__image").addEventListener("click", imageModal.open);
+        },
+    },
+    ".elements"
 );
 cardSection.renderItems();
 
 // card render
 const cardRenderer = (newCard) => {
-  const cardElement = new Card(newCard, templateElement)
-  const renderedCard = cardElement.generateCard();
-  return renderedCard;
+    const cardElement = new Card(newCard, templateElement);
+    const renderedCard = cardElement.generateCard();
+    return renderedCard;
 };
 
 //Add card modal
 const addPopup = new PopupWithForm(".modal_type_add-element", () => {
-  let newCard = addPopup.getInputValues();
-  newCard = cardRenderer(newCard);
-  console.log(newCard)
-  elementsBlock.prepend(newCard);
-  addPopup.close();
+    let newCard = addPopup.getInputValues();
+    newCard = cardRenderer(newCard);
+    console.log(newCard);
+    elementsBlock.prepend(newCard);
+    addPopup.close();
 });
 addPopup.setEventListeners();
 
@@ -105,4 +100,3 @@ addCardBtn.addEventListener("click", () => {
 closeAddBtn.addEventListener("click", () => addPopup.close());
 closeButton.addEventListener("click", () => editModal.close());
 closePopupBtn.addEventListener("click", () => imageModal.close());
-
