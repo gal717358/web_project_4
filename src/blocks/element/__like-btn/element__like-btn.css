@@ -1,10 +1,13 @@
 .element__like-btn {
     align-self: center;
-    margin-right: 18px;
+    /* margin-right: 18px; */
+    margin: 0px;
+    margin-bottom: 22px;
     background-color: transparent;
     background-position: center;
     border: none;
     cursor: pointer; 
+
 }
 .element__like-btn:hover {
     opacity: 0.5;

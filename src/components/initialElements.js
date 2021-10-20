@@ -24,5 +24,5 @@ const initialElements = [
       link: "https://code.s3.yandex.net/web-code/lago.jpg",
     },
   ];
-  export { initialElements };
+  export default  initialElements;
   

@@ -1,0 +1,16 @@
+.element__likes-count{
+    color: #000;
+    margin: 0px;
+    margin-right: 22px;
+    margin-top:  22px;
+    font-size: 13px;
+    line-height: 16px;
+
+    /* align-self: center;
+    
+    padding-top:22px;
+
+    background-color: transparent;
+    background-position: center;
+    border: none; */ 
+}

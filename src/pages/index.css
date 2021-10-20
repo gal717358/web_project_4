@@ -42,3 +42,7 @@
 @import url("../blocks/form/__input-error/form__input-error.css");
 @import url("..//blocks/form/__submit-btn/_disabled/form__submit-btn_disabled.css");
 @import url("..//blocks/form/__text-input/_theme/_error/form__text-input_theme_error.css");
+@import url("..//blocks/form/__submit-btn/form__submit-delete.css");
+@import url("..//blocks/form/__submit-btn/form__change-picture.css");
+@import url("../blocks/element/__like-btn/element__likes-count.css");
+@import url("..//blocks/profile/__change-avatar/profile__change-avatar.css");
