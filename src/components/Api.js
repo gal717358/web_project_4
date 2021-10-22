@@ -1,7 +1,7 @@
 const customFetch = (url, headers) =>
-  fetch(url, headers)
-    .then((res) => (res.ok ? res.json() : Promise.reject(res.statusText)))
-    .catch(console.log());
+  fetch(url, headers).then((res) =>
+    res.ok ? res.json() : Promise.reject(res.statusText)
+  );
 
 class Api {
   constructor({ baseUrl, headers }) {
@@ -28,6 +28,17 @@ class Api {
       headers: this.headers,
       method: "POST",
       body: JSON.stringify(data),
+    });
+  }
+  editProfile(profileInfo) {
+    // const { name, job } = profileInfo;
+    return customFetch(`${this.baseUrl}/users/me`, {
+      headers: this.headers,
+      method: "PATCH",
+      body: JSON.stringify({
+        name: profileInfo.name,
+        about: profileInfo.job,
+      }),
     });
   }
 

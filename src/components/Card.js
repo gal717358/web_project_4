@@ -31,19 +31,28 @@ export class Card {
     return this._id;
   }
   removeCard() {
-    this._element.remove(null);
+    this._element.remove();
+    this._element = null;
   }
 
   likeCard(newLikes) {
-    this._likes = newLikes;
-
-    this._element.querySelector(".element__likes-count").textContent =
-      this._likes.length;
-
-    this._element
-      .querySelector(".element__like-btn")
-      .classList.add("element__like-btn_active");
+    if (newLikes) {
+      this._likes = newLikes;
+      if (this._likes.some((person) => person._id === this._userId)) {
+        this._element
+          .querySelector(".element__like-btn")
+          .classList.add("element__like-btn_active");
+      } else {
+        this._element
+          .querySelector(".element__like-btn")
+          .classList.remove("element__like-btn_active");
+      }
+      
+      this._element.querySelector(".element__likes-count").textContent =
+        this._likes.length;
+    }
   }
+
   unLikeCard() {
     this._element
       .querySelector(".element__like-btn")
@@ -67,12 +76,7 @@ export class Card {
       this._element.querySelector(".element__delete").style.display = "none";
     }
 
-    this._element.querySelector(".element__likes-count").textContent =
-      this._likes.length;
-
-    if (this.isLiked()) {
-      this.likeCard(this._likes);
-    }
+    this.likeCard(this._likes);
 
     return this._element;
   }

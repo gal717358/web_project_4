@@ -12,9 +12,9 @@ export class UserInfo {
   }
 
   setUserInfo(userInfo) {
-    const { name, job, avatar } = userInfo;
+    const { name, about, avatar } = userInfo;
     this._name.textContent = name;
-    this._job.textContent = job;
+    this._job.textContent = about;
     this._image.src = avatar;
   }
 }

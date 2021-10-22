@@ -8,6 +8,7 @@ import Section from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { api } from "../components/Api.js";
 import PopupWithSubmit from "../components/PopupWithSubmit.js";
+import { renderLoading } from "../utils/utils.js";
 
 const settings = {
   formSelector: ".form",
@@ -26,7 +27,7 @@ Promise.all([api.getInitialCards(), api.getUserInfo()]).then(
     cardSection.renderItems(cardData);
     userInfoHolder.setUserInfo({
       name: userData.name,
-      job: userData.about,
+      about: userData.about,
       avatar: userData.avatar,
     });
   }
@@ -39,11 +40,14 @@ const profileEditBtn = document.querySelector(".profile__edit-btn");
 const closeButton = profileModal.querySelector(".modal__close-btn");
 const avatarCloseBtn = document.querySelector(".modal__change-picture");
 const userAvatarBtn = document.querySelector(".profile__change-avatar");
+const submitAvatarBtn = document.querySelector(".form__change-picture");
 
 //modals
 const addCardForm = document.querySelector(".modal_type_add-element");
 const closeAddButton = addCardForm.querySelector(".modal__close-btn");
 const addCardBtn = document.querySelector(".profile__add-btn");
+const addCardSubmitBtn = addCardForm.querySelector(".form__submit-btn");
+const editSubmitBtn = editForm.querySelector(".form__submit-btn");
 
 //create cards
 const templateElement = document
@@ -76,7 +80,7 @@ const userInfoHolder = new UserInfo(
 );
 userInfoHolder.setUserInfo({
   name: "",
-  job: "",
+  about: "",
   avatar: "",
 });
 
@@ -93,18 +97,16 @@ const cardRenderer = (newCard) => {
         const deleteSubmitHandler = document.querySelector(
           ".form__submit-delete"
         );
-        deleteSubmitHandler.textContent = "deleting...";
-        deleteSubmitHandler.setAttribute("disabled", true);
+        renderLoading(("disabled", true), "deleting...", deleteSubmitHandler);
         api
           .deleteCard(cardElement.getId())
           .then((res) => console.log("Card has been deleted."))
-          .catch((res) => {})
-          .then((res) => {
+          .catch((err) => console.log(`${err}`))
+          .finally((res) => {
             cardElement.removeCard();
-            deleteSubmitHandler.textContent = "yes";
-            deleteSubmitHandler.removeAttribute("disabled", false);
-          })
-          .then(confirmModal.close());
+            renderLoading(("disabled", false), "Yes", deleteSubmitHandler);
+            confirmModal.close();
+          });
       });
     },
     handleLikeIcon: () => {
@@ -113,7 +115,7 @@ const cardRenderer = (newCard) => {
       if (isLikeActive) {
         api.deleteLike(cardElement.getId()).then((res) => {
           cardElement.likeCard(res.likes);
-          cardElement.unLikeCard();
+          // cardElement.unLikeCard();
         });
       } else {
         api.likeCard(cardElement.getId()).then((res) => {
@@ -139,27 +141,44 @@ const cardSection = new Section(
 );
 
 const avatarPopup = new PopupWithForm(".modal_type_change-picture", () => {
+  renderLoading(("disabled", true), "saving...", submitAvatarBtn);
   api
     .avatarImage(avatarPopup.getInputValues().link)
     .then((res) => userInfoHolder.setUserInfo(res))
-    .then(avatarPopup.close());
+    .catch((err) => console.log(`Error.....: ${err}`))
+    .finally((res) => {
+      renderLoading(("disabled", false), "Change", submitAvatarBtn);
+      avatarPopup.close();
+    });
 });
 avatarPopup.setEventListeners();
 
 const addPopup = new PopupWithForm(".modal_type_add-element", () => {
-  let newCard = addPopup.getInputValues();
+  const newCard = addPopup.getInputValues();
+  renderLoading(("disabled", true), "creating...", addCardSubmitBtn);
   api.createCard(newCard).then((res) => {
-    newCard = cardRenderer(res);
-    elementsBlock.prepend(newCard);
+    const newCardInput = cardRenderer(res);
+    elementsBlock.prepend(newCardInput)
+  }).catch((err) => console.log(`Error.....: ${err}`))
+  .finally((res) => {
+    renderLoading(("disabled", false), "Create", addCardSubmitBtn);
     addPopup.close(res);
-  });
+  })
 });
 addPopup.setEventListeners();
 
 // edit profile modal
 const editModal = new PopupWithForm(".modal_type_profile", () => {
-  userInfoHolder.setUserInfo(editModal.getInputValues());
-  editModal.close();
+  renderLoading(("disabled", true), "saving...", editSubmitBtn);
+  api
+    .editProfile(editModal.getInputValues())
+    .then((res) => {
+      userInfoHolder.setUserInfo(res); console.log(res)
+    }).catch((err) => console.log(`Error.....: ${err}`))
+    .finally((res) => {
+      renderLoading(("disabled", false), "save", editSubmitBtn);
+      editModal.close();
+    });
 });
 editModal.setEventListeners();
 

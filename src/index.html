@@ -1,117 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="./src/pages/index.css" />
-        <title>Around The U.S.</title>
-    </head>
 
-    <body class="page">
-        <div class="page__container">
-            <header class="header">
-                <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="header-logo" />
-            </header>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <link rel="stylesheet" href="./src/pages/index.css" /> -->
+    <title>Around The U.S.</title>
+</head>
 
-            <main>
-                <div class="profile">
-                    <button class="profile__change-avatar" aria-label="edit picture" name="edit picture" type="button">
-                        <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="profile picture" />
-                    </button>
+<body class="page">
+    <div class="page__container">
+        <header class="header">
+            <img class="header__logo" src="<%=require('./images/Vector.svg')%>" alt="header-logo" />
+        </header>
 
-                    <div class="profile__info">
-                        <div class="profile__info-top">
-                            <h1 class="profile__title">Jacques Cousteau</h1>
-                            <button class="profile__edit-btn" aria-label="edit button" name="edit button" type="button"></button>
-                        </div>
-                        <p class="profile__job">Explorer</p>
+        <main>
+            <div class="profile">
+                <button class="profile__change-avatar" aria-label="edit picture" name="edit picture" type="button">
+                    <img class="profile__avatar" src="<%=require('./images/image.png')%>" alt="profile picture" />
+                </button>
+
+                <div class="profile__info">
+                    <div class="profile__info-top">
+                        <h1 class="profile__title">Jacques Cousteau</h1>
+                        <button class="profile__edit-btn" aria-label="edit button" name="edit button"
+                            type="button"></button>
                     </div>
-                    <button class="profile__add-btn" aria-label="add button" name="add button" type="button"></button>
+                    <p class="profile__job">Explorer</p>
                 </div>
-
-                <section class="elements"></section>
-            </main>
-            <footer class="footer">
-                <p class="footer__copyright">© 2021 Around The U.S.</p>
-            </footer>
-            <div class="modal modal_type_profile modal_closed">
-                <div class="modal__container">
-                    <button type="button" class="modal__close-btn modal__close-profile" aria-label="close button" name="close button"></button>
-                    <form class="form form-profile" action="/" name="form" novalidate>
-                        <fieldset class="form__fieldset">
-                            <h2 class="form__title">Edit Profile</h2>
-                            <input id="name-input" type="text" name="name" class="form__text-input form__text-input_type_name" minlength="2" maxlength="40" required />
-                            <span id="name-input-error" class="form__input-error"> </span>
-
-                            <input id="job-input" type="text" name="job" class="form__text-input form__text-input_type_job" minlength="2" maxlength="200" required />
-                            <span id="job-input-error" class="form__input-error"> </span>
-                            <button type="submit" name="submit button" class="form__submit-btn">Save</button>
-                        </fieldset>
-                    </form>
-                </div>
+                <button class="profile__add-btn" aria-label="add button" name="add button" type="button"></button>
             </div>
-            <div class="modal modal_type_add-element modal_closed">
-                <div class="modal__container">
-                    <button type="button" class="modal__close-btn modal__close-add" aria-label="close button" name="close button"></button>
-                    <form class="form form-element" action="/" name="form__add-element" novalidate>
-                        <fieldset class="form__fieldset">
-                            <h2 class="form__title">New place</h2>
-                            <input id="name-element-input" type="text" name="name" class="form__text-input form__text-input_type_name-element" placeholder="Title" minlength="1" maxlength="30" required />
-                            <span id="name-element-input-error" class="form__input-error"> </span>
 
-                            <input id="img-element-input" type="url" name="link" class="form__text-input form__text-input_type_img-element" placeholder="Image Url" required />
-                            <span id="img-element-input-error" class="form__input-error"> </span>
-                            <button type="submit" name="submit button" class="form__submit-btn">Create</button>
-                        </fieldset>
-                    </form>
-                </div>
+            <section class="elements"></section>
+        </main>
+        <footer class="footer">
+            <p class="footer__copyright">© 2021 Around The U.S.</p>
+        </footer>
+        <div class="modal modal_type_profile modal_closed">
+            <div class="modal__container">
+                <button type="button" class="modal__close-btn modal__close-profile" aria-label="close button"
+                    name="close button"></button>
+                <form class="form form-profile" action="/" name="form" novalidate>
+                    <fieldset class="form__fieldset">
+                        <h2 class="form__title">Edit Profile</h2>
+                        <input id="name-input" type="text" name="name"
+                            class="form__text-input form__text-input_type_name" minlength="2" maxlength="40" required />
+                        <span id="name-input-error" class="form__input-error"> </span>
+
+                        <input id="job-input" type="text" name="job" class="form__text-input form__text-input_type_job"
+                            minlength="2" maxlength="200" required />
+                        <span id="job-input-error" class="form__input-error"> </span>
+                        <button type="submit" name="submit button" class="form__submit-btn">Save</button>
+                    </fieldset>
+                </form>
             </div>
-            <template id="element-template">
-                <div class="elements">
-                    <div class="element">
-                        <button type="button" class="element__delete" name="delete button"></button>
-                        <img class="element__image" />
-                        <div class="element__description">
-                            <h2 class="element__title"></h2>
-                            <button type="button" class="element__like-btn" aria-label="like-button"><img src="<%=require('./images/like-btn.svg')%>" alt="like-btn" /></button>
+        </div>
+        <div class="modal modal_type_add-element modal_closed">
+            <div class="modal__container">
+                <button type="button" class="modal__close-btn modal__close-add" aria-label="close button"
+                    name="close button"></button>
+                <form class="form form-element" action="/" name="form__add-element" novalidate>
+                    <fieldset class="form__fieldset">
+                        <h2 class="form__title">New place</h2>
+                        <input id="name-element-input" type="text" name="name"
+                            class="form__text-input form__text-input_type_name-element" placeholder="Title"
+                            minlength="1" maxlength="30" required />
+                        <span id="name-element-input-error" class="form__input-error"> </span>
+
+                        <input id="img-element-input" type="url" name="link"
+                            class="form__text-input form__text-input_type_img-element" placeholder="Image Url"
+                            required />
+                        <span id="img-element-input-error" class="form__input-error"> </span>
+                        <button type="submit" name="submit button" class="form__submit-btn">Create</button>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <template id="element-template">
+            <div class="elements">
+                <div class="element">
+                    <button type="button" class="element__delete" name="delete button"></button>
+                    <img class="element__image" />
+                    <div class="element__description">
+                        <h2 class="element__title"></h2>
+                        <div class="element__like-container">
+                            <button type="button" class="element__like-btn" aria-label="like-button"></button>
                             <span class="element__likes-count"> </span>
                         </div>
+                        
                     </div>
                 </div>
-            </template>
-            <div class="modal modal_type_pop-up modal_closed">
-                <div class="modal__container modal__container_type_popup">
-                    <button type="button" class="modal__close-btn modal__close-popup" aria-label="close button popup" name="popup close button"></button>
-                    <img class="modal__img" alt="/" src="/" />
-                    <h2 class="modal__title"></h2>
-                </div>
+            </div>
+        </template>
+        <div class="modal modal_type_pop-up modal_closed">
+            <div class="modal__container modal__container_type_popup">
+                <button type="button" class="modal__close-btn modal__close-popup" aria-label="close button popup"
+                    name="popup close button"></button>
+                <img class="modal__img" alt="/" src="/" />
+                <h2 class="modal__title"></h2>
             </div>
         </div>
-        <div class="modal modal_type_delete-card modal_closed">
-            <div class="modal__container">
-                <button type="button" class="modal__close-btn modal__delete-card" aria-label="close button" name="close button"></button>
-                <form class="form form-delete" action="/" name="form__delete">
-                    <fieldset class="form__fieldset">
-                        <h2 class="form__title">Are you sure?</h2>
-                        <button type="submit" name="submit button" class="form__submit-delete">Yes</button>
-                    </fieldset>
-                </form>
-            </div>
+    </div>
+    <div class="modal modal_type_delete-card modal_closed">
+        <div class="modal__container">
+            <button type="button" class="modal__close-btn modal__delete-card" aria-label="close button"
+                name="close button"></button>
+            <form class="form form-delete" action="/" name="form__delete">
+                <fieldset class="form__fieldset">
+                    <h2 class="form__title">Are you sure?</h2>
+                    <button type="submit" name="submit button" class="form__submit-delete">Yes</button>
+                </fieldset>
+            </form>
         </div>
-        <div class="modal modal_type_change-picture modal_closed">
-            <div class="modal__container">
-                <button type="button" class="modal__close-btn modal__change-picture" aria-label="close button" name="close button"></button>
-                <form class="form form_change-picture" action="/" name="form__change-picture">
-                    <fieldset class="form__fieldset">
-                        <h2 class="form__title">Change profile picture</h2>
-                        <input id="change-picture-input" type="url" name="link" class="form__text-input form__text-input_type_change-picture" placeholder="profile Url" required />
-                        <span id="change-picture-input-error" class="form__input-error"> </span>
-                        <button type="submit" name="submit button" class="form__change-picture">Save</button>
-                    </fieldset>
-                </form>
-            </div>
+    </div>
+    <div class="modal modal_type_change-picture modal_closed">
+        <div class="modal__container">
+            <button type="button" class="modal__close-btn modal__change-picture" aria-label="close button"
+                name="close button"></button>
+            <form class="form form_change-picture" action="/" name="form__change-picture">
+                <fieldset class="form__fieldset">
+                    <h2 class="form__title">Change profile picture</h2>
+                    <input id="change-picture-input" type="url" name="link"
+                        class="form__text-input form__text-input_type_change-picture" placeholder="profile Url"
+                        required />
+                    <span id="change-picture-input-error" class="form__input-error"> </span>
+                    <button type="submit" name="submit button" class="form__change-picture">Change</button>
+                </fieldset>
+            </form>
         </div>
-        <script type="module" src="./src/pages/index.js"></script>
-    </body>
+    </div>
+    <script type="module" src="./src/pages/index.js"></script>
+</body>
+
 </html>
